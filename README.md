@@ -1,2 +1,143 @@
-# sql-data-werehouse-project
-Building a modern data werehouse with SQL server, including ETL processes, data modeling, and analytics. 
+# Data Warehouse and Analytics Project
+
+[![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@datawithbaraa) [![Udemy](https://img.shields.io/badge/Udemy-A435F0?style=for-the-badge&logo=udemy&logoColor=white)](https://www.udemy.com/course/building-a-modern-data-warehouse-data-engineering-bootcamp/) [![Website](https://img.shields.io/badge/datawithbaraa.com-111111?style=for-the-badge&logo=googlechrome&logoColor=white)](https://www.datawithbaraa.com) [![License](https://img.shields.io/github/license/DataWithBaraa/sql-data-warehouse-project?style=for-the-badge&color=2EA043)](LICENSE) [![Stars](https://img.shields.io/github/stars/DataWithBaraa/sql-data-warehouse-project?style=for-the-badge&color=F5B301)](https://github.com/DataWithBaraa/sql-data-warehouse-project)
+
+The materials of the data warehouse project: the source files, every script from the videos, and the docs.
+
+⭐ If this project helps you, star the repository so other learners can find it too.
+
+You take raw files from two systems, a CRM and an ERP, and build one data warehouse in SQL Server. At the end, the data is clean and ready for analysis.
+
+**New here? Open the setup guide in the `00_setup` folder.** It walks you through installing SQL Server and creating the database, on Windows and Mac, with the fixes for the common errors.
+
+```
+sql-data-warehouse-project/
+├── 00_setup/               the setup guide, and the one-click Docker start for Mac
+├── 01_datasets/            the six source files the project loads
+│   ├── source_crm/         three files from the CRM system
+│   └── source_erp/         three files from the ERP system
+├── 02_docs/                the requirements, the diagrams and the notes
+├── 03_scripts/             the project scripts, in the order of the videos
+│   ├── init_database.sql   creates the database: run it first
+│   ├── bronze/             loads the raw files
+│   ├── silver/             cleans and prepares the data
+│   └── gold/               builds the tables for analysis
+└── 04_tests/               checks the quality of the silver and gold data
+```
+
+The project reads the six files from `C:\sql\dwh_project\01_datasets\`. Put the folder there, or change the six paths in `03_scripts/bronze/proc_load_bronze.sql`. The videos show the folders without numbers: `datasets` there is `01_datasets` here, `scripts` is `03_scripts`.
+
+<details>
+<summary><b>The 45 chapters</b>: the minute in the video and the files of each one</summary>
+
+| # | Chapter | Video | Files |
+|--:|:--|:--|:--|
+| 1 | Intro | [0:00:00](https://youtu.be/9GVqKuTVANE?t=0) |  |
+| 2 | Types of SQL Projects | [0:01:27](https://youtu.be/9GVqKuTVANE?t=87) |  |
+| 3 | What is Data Warehouse | [0:02:50](https://youtu.be/9GVqKuTVANE?t=170) |  |
+| 4 | What is ETL | [0:09:41](https://youtu.be/9GVqKuTVANE?t=581) | [ETL.png](02_docs/ETL.png) |
+| 5 | Project Materials | [0:20:29](https://youtu.be/9GVqKuTVANE?t=1229) | [the setup guide](00_setup) |
+| 6 | Project Plan Using Notion | [0:23:14](https://youtu.be/9GVqKuTVANE?t=1394) | [Notion template](https://www.notion.com/templates/sql-data-warehouse-project) |
+| 7 | Analyzing Requirements | [0:30:54](https://youtu.be/9GVqKuTVANE?t=1854) | [requirements.md](02_docs/requirements.md) · [Project_Requirements.pdf](02_docs/Project_Requirements.pdf) |
+| 8 | Design The Data Architecture | [0:34:10](https://youtu.be/9GVqKuTVANE?t=2050) | [data_architecture.png](02_docs/data_architecture.png) |
+| 9 | Choose the Right Approach | [0:35:20](https://youtu.be/9GVqKuTVANE?t=2120) |  |
+| 10 | Design the Layers of DWH | [0:40:43](https://youtu.be/9GVqKuTVANE?t=2443) | [data_layers.pdf](02_docs/data_layers.pdf) |
+| 11 | Draw the Architecture using Draw.io | [0:47:37](https://youtu.be/9GVqKuTVANE?t=2857) | [data_architecture.png](02_docs/data_architecture.png) |
+| 12 | Project Initialization | [0:56:00](https://youtu.be/9GVqKuTVANE?t=3360) |  |
+| 13 | Define Naming Conventions | [0:56:56](https://youtu.be/9GVqKuTVANE?t=3416) | [naming_conventions.md](02_docs/naming_conventions.md) |
+| 14 | Prepare Your GIT Repository | [1:03:26](https://youtu.be/9GVqKuTVANE?t=3806) |  |
+| 15 | Create Database & Schemas | [1:07:54](https://youtu.be/9GVqKuTVANE?t=4074) | [init_database.sql](03_scripts/init_database.sql) |
+| 16 | Commit Code in Git Repo | [1:10:33](https://youtu.be/9GVqKuTVANE?t=4233) |  |
+| 17 | Build Bronze Layer | [1:13:14](https://youtu.be/9GVqKuTVANE?t=4394) |  |
+| 18 | Analyze Source Systems | [1:14:36](https://youtu.be/9GVqKuTVANE?t=4476) | [01_datasets](01_datasets) |
+| 19 | Create DDL for Bronze Tables | [1:18:40](https://youtu.be/9GVqKuTVANE?t=4720) | [ddl_bronze.sql](03_scripts/bronze/ddl_bronze.sql) |
+| 20 | Develop SQL Load Scripts | [1:24:21](https://youtu.be/9GVqKuTVANE?t=5061) | [proc_load_bronze.sql](03_scripts/bronze/proc_load_bronze.sql) |
+| 21 | Create Bronze Stored Procedure | [1:32:18](https://youtu.be/9GVqKuTVANE?t=5538) | [proc_load_bronze.sql](03_scripts/bronze/proc_load_bronze.sql) |
+| 22 | Document: Bronze Data Flow | [1:45:28](https://youtu.be/9GVqKuTVANE?t=6328) | [data_flow.png](02_docs/data_flow.png) |
+| 23 | Build Silver Layer | [1:50:31](https://youtu.be/9GVqKuTVANE?t=6631) |  |
+| 24 | Explore & Understand The Data | [1:52:08](https://youtu.be/9GVqKuTVANE?t=6728) | [data_integration.png](02_docs/data_integration.png) |
+| 25 | Create DDL for Silver Tables | [2:03:05](https://youtu.be/9GVqKuTVANE?t=7385) | [ddl_silver.sql](03_scripts/silver/ddl_silver.sql) |
+| 26 | Clean & Load crm_cust_info | [2:06:52](https://youtu.be/9GVqKuTVANE?t=7612) | [proc_load_silver.sql](03_scripts/silver/proc_load_silver.sql) |
+| 27 | Clean & Load crm_prd_info | [2:22:03](https://youtu.be/9GVqKuTVANE?t=8523) | [proc_load_silver.sql](03_scripts/silver/proc_load_silver.sql) |
+| 28 | Clean & Load crm_sales_details | [2:42:48](https://youtu.be/9GVqKuTVANE?t=9768) | [proc_load_silver.sql](03_scripts/silver/proc_load_silver.sql) |
+| 29 | Clean & Load erp_cust_az12 | [2:59:38](https://youtu.be/9GVqKuTVANE?t=10778) | [proc_load_silver.sql](03_scripts/silver/proc_load_silver.sql) |
+| 30 | Clean & Load erp_loc_a101 | [3:08:38](https://youtu.be/9GVqKuTVANE?t=11318) | [proc_load_silver.sql](03_scripts/silver/proc_load_silver.sql) |
+| 31 | Clean & Load erp_px_cat_g1v2 | [3:14:16](https://youtu.be/9GVqKuTVANE?t=11656) | [proc_load_silver.sql](03_scripts/silver/proc_load_silver.sql) |
+| 32 | Create Silver Stored Procedure | [3:18:38](https://youtu.be/9GVqKuTVANE?t=11918) | [proc_load_silver.sql](03_scripts/silver/proc_load_silver.sql) |
+| 33 | Document: Silver Data Flow | [3:24:29](https://youtu.be/9GVqKuTVANE?t=12269) | [data_flow.png](02_docs/data_flow.png) |
+| 34 | Build Gold Layer | [3:28:09](https://youtu.be/9GVqKuTVANE?t=12489) |  |
+| 35 | What is Data Modeling? | [3:29:39](https://youtu.be/9GVqKuTVANE?t=12579) |  |
+| 36 | Star Schema vs. Snowflake Schema | [3:32:17](https://youtu.be/9GVqKuTVANE?t=12737) |  |
+| 37 | Dimensions vs Facts | [3:34:06](https://youtu.be/9GVqKuTVANE?t=12846) |  |
+| 38 | Explore the Business Objects | [3:35:10](https://youtu.be/9GVqKuTVANE?t=12910) |  |
+| 39 | Create Dimension Customers | [3:39:04](https://youtu.be/9GVqKuTVANE?t=13144) | [ddl_gold.sql](03_scripts/gold/ddl_gold.sql) |
+| 40 | Create Dimension Products | [3:55:30](https://youtu.be/9GVqKuTVANE?t=14130) | [ddl_gold.sql](03_scripts/gold/ddl_gold.sql) |
+| 41 | Create Fact Sales | [4:02:43](https://youtu.be/9GVqKuTVANE?t=14563) | [ddl_gold.sql](03_scripts/gold/ddl_gold.sql) |
+| 42 | Build The Star Schema Model | [4:08:48](https://youtu.be/9GVqKuTVANE?t=14928) | [data_model.png](02_docs/data_model.png) |
+| 43 | Data Catalog | [4:13:58](https://youtu.be/9GVqKuTVANE?t=15238) | [data_catalog.md](02_docs/data_catalog.md) |
+| 44 | Data Flow | [4:16:40](https://youtu.be/9GVqKuTVANE?t=15400) | [data_flow.png](02_docs/data_flow.png) |
+| 45 | End of Project | [4:21:45](https://youtu.be/9GVqKuTVANE?t=15705) |  |
+
+The sketches of the whole project: [Project_Notes_Sketches.pdf](02_docs/Project_Notes_Sketches.pdf). The quality checks: [quality_checks_silver.sql](04_tests/quality_checks_silver.sql) and [quality_checks_gold.sql](04_tests/quality_checks_gold.sql).
+
+</details>
+
+---
+## 🏗️ Data Architecture
+
+The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
+![Data Architecture](02_docs/data_architecture.png)
+
+1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV Files into SQL Server Database.
+2. **Silver Layer**: This layer includes data cleansing, standardization, and normalization processes to prepare data for analysis.
+3. **Gold Layer**: Houses business-ready data modeled into a star schema required for reporting and analytics.
+
+---
+## 📖 Project Overview
+
+In this project, you:
+
+1. **Design the architecture:** a modern data warehouse with three layers, bronze, silver and gold.
+2. **Build the ETL pipelines:** load the source files and move the data through the layers.
+3. **Model the data:** facts and dimensions, ready for reports.
+4. **Analyze it:** answer business questions with SQL.
+
+---
+
+## 🛠️ Important Links & Tools
+
+- **SQL Server and SSMS:** the setup guide in `00_setup` has the links and every step.
+- **[Git](https://github.com/):** a GitHub account, to save and share your project.
+- **[draw.io](https://www.drawio.com/):** to draw the architecture and the data model.
+- **[Notion template](https://www.notion.com/templates/sql-data-warehouse-project):** the project plan, ready to copy.
+- **[Notion project steps](https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269?pvs=4):** every phase and task of the project.
+
+---
+
+## 🚀 Project Requirements
+
+### Building the Data Warehouse (Data Engineering)
+
+#### Objective
+Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
+
+#### Specifications
+- **Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
+- **Data Quality**: Cleanse and resolve data quality issues prior to analysis.
+- **Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
+- **Scope**: Focus on the latest dataset only; historization of data is not required.
+- **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
+
+---
+
+### BI: Analytics & Reporting (Data Analysis)
+
+#### Objective
+Develop SQL-based analytics to deliver detailed insights into:
+- **Customer Behavior**
+- **Product Performance**
+- **Sales Trends**
+
+These insights empower stakeholders with key business metrics, enabling strategic decision-making.  
+
+For more details, refer to [02_docs/requirements.md](02_docs/requirements.md).
